@@ -1,8 +1,9 @@
 const axios = require('axios');
+axios.defaults.baseURL = process.env.APP_URL
 
 exports.homeRoutes = (req,res) => {
     //Make get request to /api/users
-    axios.get('http://localhost:3000/api/users')
+    axios.get(`${process.env.APP_URL}/api/users`)
         .then(function(response){
             console.log(response)
             res.render('index', {users: response.data});
@@ -17,7 +18,7 @@ exports.add_user = (req,res) =>{
 }
 
 exports.update_user = (req,res) =>{
-    axios.get('http://localhost:3000/api/users', {params: { id: req.query.id}})
+    axios.get(`${process.env.APP_URL}/api/users`, {params: { id: req.query.id}})
     .then(function(userdata){
         res.render("update_user", {user : userdata.data})
     })
