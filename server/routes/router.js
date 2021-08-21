@@ -10,6 +10,7 @@ const controller = require('../controller/controller')
 * @method GET /
 */
 
+route.get('/', services.homeRoutes);
 
 /**
 * @description add users
